@@ -13,10 +13,14 @@ const filters = ref({
 })
 
 onMounted(async () => {
-    const response = await fetch('https://localhost:7202/api/TaskScheduler')
-    response.json().then((data) => jobs.value = transformData(data)).catch((err) => console.error(err))
+    fetchData()
     loading.value = false
 })
+
+const fetchData = async () => {
+    const response = await fetch('https://localhost:7202/api/TaskScheduler')
+    response.json().then((data) => jobs.value = transformData(data)).catch((err) => console.error(err))
+}
 
 const transformData = (data) => {
     return [...(data || [])].map((d) => {
@@ -60,6 +64,7 @@ const states = ref([
                         <i class="pi pi-search" />
                         <InputText v-model="filters['global'].value" placeholder="Search the whole table" />
                     </span>
+                    <Button label="Refresh" @click="fetchData" />
                 </div>
             </template>
             <template #empty> No Task Found</template>
