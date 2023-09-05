@@ -1,5 +1,5 @@
 <template>
     <div>
-        <Table />
+        <TaskScheduler />
     </div>
 </template>
