@@ -7,6 +7,7 @@ import Column from "primevue/column";
 import Dropdown from "primevue/dropdown";
 import TriStateCheckbox from "primevue/tristatecheckbox";
 import InputText from "primevue/inputtext";
+import Tag from "primevue/tag";
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(PrimeVue, { ripple: true });
@@ -17,5 +18,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.component("Dropdown", Dropdown)
     nuxtApp.vueApp.component("TriStateCheckbox", TriStateCheckbox)
     nuxtApp.vueApp.component("InputText", InputText)
+    nuxtApp.vueApp.component("Tag", Tag)
     //other components that you need
 });
