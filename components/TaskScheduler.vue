@@ -18,7 +18,7 @@ onMounted(async () => {
 })
 
 const fetchData = async () => {
-    const response = await fetch('https://localhost:7202/api/TaskScheduler')
+    const response = await fetch('http://localhost:8080/TaskScheduler')
     response.json().then((data) => jobs.value = transformData(data)).catch((err) => console.error(err))
 }
 
@@ -99,18 +99,18 @@ const states = ref([
                         placeholder="Last Run Time"></InputText>
                 </template>
             </Column>
-            <Column field="lastTaskResult" header="Last Task Result" style="min-width: 12rem;" filterField="lastTaskResult">
-                <template #body="{ data }">{{ data.lastTaskResult }}</template>
-                <template #filter="{ filterModel, filterCallback }">
-                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter"
-                        placeholder="Last Task Result"></InputText>
-                </template>
-            </Column>
             <Column field="nextRunTime" header="Next Run Time" style="min-width: 12rem;" filterField="nextRunTime">
                 <template #body="{ data }">{{ data.nextRunTime }}</template>
                 <template #filter="{ filterModel, filterCallback }">
                     <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter"
                         placeholder="Next Run Time"></InputText>
+                </template>
+            </Column>
+            <Column field="lastTaskResult" header="Last Task Result" style="min-width: 12rem;" filterField="lastTaskResult">
+                <template #body="{ data }">{{ data.lastTaskResult }}</template>
+                <template #filter="{ filterModel, filterCallback }">
+                    <InputText v-model="filterModel.value" type="text" @input="filterCallback()" class="p-column-filter"
+                        placeholder="Last Task Result"></InputText>
                 </template>
             </Column>
         </DataTable>
